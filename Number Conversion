@@ -1,0 +1,25 @@
+def base_to_decimal(number, base):
+    return int(number, base)
+
+def decimal_to_base(n, base):
+        if n == 0:
+            return "0"
+        dig=""
+        while n:
+            rem = int(n%base)
+            if rem < 10:
+                dig += str(rem)
+            else:
+                
+                dig += chr(rem - 10 + ord('A'))
+            n //= base
+        return dig[::-1]
+
+def base_to_base(number, source_base, target_base):
+      decimal_value = base_to_decimal(number, source_base)
+      return decimal_to_base(decimal_value, target_base)
+number = input("Enter the number: ")  # Example: 'FF'
+source_base = int(input("Enter the source base: "))  # Example: 16
+target_base = int(input("Enter the target base: "))  # Example: 2
+converted_number = base_to_base(number, source_base, target_base)
+print(f"{number} in base {source_base} is {converted_number} in base {target_base}")
